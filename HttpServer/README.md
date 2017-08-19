@@ -15,5 +15,8 @@ python3 -m http.server [port]
 
 ## 改进
 Python自带的 HTTP 服务器只有页面显示和文件下载功能，不支持文件上传，使用起来多有不便，这里在默认 SimpleHTTPServer 的基础上增加文件上传功能。  
-实现方式为重载 `SimpleHTTPRequestHandler` 的 `do_POST` 和 `list_directory` 方法。其中在 `do_POST` 方法中实现文件保存，在 `list_directory` 方法中增加一个 POST 文件的表单。  
-具体实现方式见 [httpServer.py](httpServer.py)
+实现方式为重载 `SimpleHTTPRequestHandler` 的 `do_POST` 和 `list_directory` 方法。其中在 `do_POST` 方法中实现文件保存，在 `list_directory` 方法中增加一个 POST 文件的表单。具体实现方式见 [httpServer.py](httpServer.py)  
+很多时候通过多层跳板登录时，无法直接通过 scp 拷贝文件，可以先通过终端将通过复制粘贴将该文件保存。然后执行该脚本启动一个可以上传下载的页面服务。
+```python
+python3 httpServer.py [port]
+```
